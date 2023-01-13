@@ -25,6 +25,13 @@ let state = {
       { id: 6, name: 'Valera' }
     ],
   },
+  sidebar: {
+    user: [
+      { id: 1, name: 'Dima', url: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' },
+      { id: 2, name: 'Asya', url: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' },
+      { id: 3, name: 'Roma', url: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' },
+    ]
+  }
 
 }
 
