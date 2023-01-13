@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './Navbar.module.css';
 import { NavLink } from "react-router-dom";
-import Sidebar from './Sidebar/Sidebar';
+// import Sidebar from './Sidebar/Sidebar';
 
 const Navbar = (props) => {
-  let sidebarElement = props.state.user.map(us => <Sidebar url={us.url} id={us.id} name={us.name} />);
+  // let sidebarElement = props.state.user.map(us => <Sidebar url={us.url} id={us.id} name={us.name} />);
   return (
     <div>
 
@@ -16,13 +16,13 @@ const Navbar = (props) => {
           <NavLink to="/dialogs" className={navData => navData.isActive ? s.active : s.item}>Messages</NavLink>
         </div>
         <div className={s.item}>
-          <a>News</a>
+          <div>News</div>
         </div>
         <div className={s.item}>
-          <a>Music</a>
+          <div>Music</div>
         </div>
         <div className={s.item}>
-          <a>Settings</a>
+          <div>Settings</div>
         </div>
       </nav>
       {/* <ul className={s.listUsers}>
