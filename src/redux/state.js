@@ -1,5 +1,6 @@
-import { rerenderEntireTree } from "../render"
-
+let rerenderEntireTree = () => {
+  console.log('rerender');
+}
 let state = {
   profilePage: {
     posts: [
@@ -36,10 +37,9 @@ let state = {
       { id: 3, name: 'Roma', url: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' },
     ]
   }
-
 }
 
-export let addPost = () => {
+export const addPost = () => {
   let newPost = {
     id: 5,
     message: state.profilePage.newPostText,
@@ -51,12 +51,12 @@ export let addPost = () => {
   rerenderEntireTree(state);
 }
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
   rerenderEntireTree(state);
 }
 
-export let addMessage = () => {
+export const addMessage = () => {
   let newMessage = {
     id: 7, 
     message: state.dialogsPage.newMessage
@@ -67,9 +67,13 @@ export let addMessage = () => {
   rerenderEntireTree(state);
 }
 
-export let updateNewMessage = (newMessage) => {
+export const updateNewMessage = (newMessage) => {
   state.dialogsPage.newMessage = newMessage;
   rerenderEntireTree(state);
+}
+
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer;
 }
 
 export default state
