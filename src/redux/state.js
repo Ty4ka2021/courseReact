@@ -27,6 +27,7 @@ let state = {
       { id: 5, name: 'Viktor' },
       { id: 6, name: 'Valera' }
     ],
+    newMessage: 'Введіть щось',
   },
   sidebar: {
     user: [
@@ -52,6 +53,22 @@ export let addPost = () => {
 
 export let updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
+  rerenderEntireTree(state);
+}
+
+export let addMessage = () => {
+  let newMessage = {
+    id: 7, 
+    message: state.dialogsPage.newMessage
+  }
+
+  state.dialogsPage.messages.push(newMessage);
+  state.dialogsPage.newMessage = '';
+  rerenderEntireTree(state);
+}
+
+export let updateNewMessage = (newMessage) => {
+  state.dialogsPage.newMessage = newMessage;
   rerenderEntireTree(state);
 }
 
