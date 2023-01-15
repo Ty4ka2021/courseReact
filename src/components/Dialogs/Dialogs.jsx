@@ -10,12 +10,12 @@ const Dialogs = (props) => {
 
   let newMessage = React.createRef();
   let addMessage = () => {
-    props.addMessage();
+    props.dispatch({ type: 'ADD-MESSAGE' });
   }
 
   let onMessageChange = () => {
     let text = newMessage.current.value;
-    props.updateNewMessage(text);
+    props.dispatch({ type: 'UPDATE-NEW-MESSAGE', newMessage: text });
   }
 
   return (
@@ -25,7 +25,7 @@ const Dialogs = (props) => {
       </div>
       <div className={s.messages}>
         {messagesElements}
-        <input onChange={onMessageChange} ref={newMessage} value={props.state.newMessage}/>
+        <input onChange={onMessageChange} ref={newMessage} value={props.state.newMessage} />
         <button onClick={addMessage}>Відправити повідомлення</button>
       </div>
     </div>

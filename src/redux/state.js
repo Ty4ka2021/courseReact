@@ -36,43 +36,46 @@ let store = {
       ]
     }
   },
+  _callSubscriber() {
+    console.log('rerender');
+  },
+
   getState() {
     return this._state;
   },
-  _callSubscriber () {
-    console.log('rerender');
-  },
-  addPost () {
-    let newPost = {
-      id: 5,
-      message: this._state.profilePage.newPostText,
-      likesCount: 0
-    }
-
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = '';
-    this._callSubscriber(this._state);
-  },
-  updateNewPostText (newText) {
-    this._state.profilePage.newPostText = newText;
-    this._callSubscriber(this._state);
-  },
-  addMessage () {
-    let newMessage = {
-      id: 7,
-      message: this._state.dialogsPage.newMessage
-    }
-
-    this._state.dialogsPage.messages.push(newMessage);
-    this._state.dialogsPage.newMessage = '';
-    this._callSubscriber(this._state);
-  },
-  updateNewMessage (newMessage) {
-    this._state.dialogsPage.newMessage = newMessage;
-    this._callSubscriber(this._state);
-  },
-  subscribe (observer) {
+  subscribe(observer) {
     this._callSubscriber = observer;
+  },
+
+
+
+  dispatch(action) { // {type: 'ADD-POST'}
+    if (action.type === 'ADD-POST') {
+      let newPost = {
+        id: 5,
+        message: this._state.profilePage.newPostText,
+        likesCount: 0
+      }
+
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = '';
+      this._callSubscriber(this._state);
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.profilePage.newPostText = action.newText;
+      this._callSubscriber(this._state);
+    } if (action.type === 'ADD-MESSAGE') {
+      let newMessage = {
+        id: 7,
+        message: this._state.dialogsPage.newMessage
+      }
+
+      this._state.dialogsPage.messages.push(newMessage);
+      this._state.dialogsPage.newMessage = '';
+      this._callSubscriber(this._state);
+    } else if (action.type === 'UPDATE-NEW-MESSAGE') {
+      this._state.dialogsPage.newMessage = action.newMessage;
+      this._callSubscriber(this._state);
+    }
   }
 }
 
