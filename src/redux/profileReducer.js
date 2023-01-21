@@ -8,8 +8,8 @@ let initialState = {
     { id: 3, message: 'Blabla', likesCount: 11 },
     { id: 4, message: 'Dada', likesCount: 11 }
   ],
-  newPostText: 'Введіть новий пост'
-}
+  newPostText: 'it-kamasutra.com'
+};
 
 const profileReducer = (state = initialState, action) => {
 
@@ -19,31 +19,21 @@ const profileReducer = (state = initialState, action) => {
         id: 5,
         message: state.newPostText,
         likesCount: 0
-      }
-
+      };
       state.posts.push(newPost);
       state.newPostText = '';
-      break;
-
+      return state;
     case UPDATE_NEW_POST_TEXT:
       state.newPostText = action.newText;
-      break;
-
+      return state;
     default:
-      break;
-  }
-
-  return state;
-}
-
-export const addPostActionCreator = () => {
-  return { type: ADD_POST }
-}
-
-export const updateNewPostActionCreator = (text) => {
-  return {
-    type: UPDATE_NEW_POST_TEXT, newText: text
+      return state;
   }
 }
+
+
+export const addPostActionCreator = () => ({ type: ADD_POST })
+export const updateNewPostTextActionCreator = (text) =>
+  ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 
 export default profileReducer;

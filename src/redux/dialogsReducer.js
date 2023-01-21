@@ -1,16 +1,7 @@
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
-
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
+const SEND_MESSAGE = 'SEND_MESSAGE';
 
 let initialState = {
-  messages: [
-    { id: 1, message: 'Hi' },
-    { id: 2, message: 'How is your it-kamasutra?' },
-    { id: 3, message: 'Yo' },
-    { id: 4, message: 'Yo' },
-    { id: 5, message: 'Yo' },
-    { id: 6, message: 'Yo6' },
-  ],
   dialogs: [
     { id: 1, name: 'Dimych' },
     { id: 2, name: 'Andrew' },
@@ -19,37 +10,33 @@ let initialState = {
     { id: 5, name: 'Viktor' },
     { id: 6, name: 'Valera' }
   ],
-  newMessage: 'Введіть щось',
-}
+  messages: [
+    { id: 1, message: 'Hi' },
+    { id: 2, message: 'How is your it-kamasutra?' },
+    { id: 3, message: 'Yo' },
+    { id: 4, message: 'Yo' },
+    { id: 5, message: 'Yo' }
+  ],
+  newMessageBody: ""
+};
 
 const dialogsReducer = (state = initialState, action) => {
-
   switch (action.type) {
-    case ADD_MESSAGE:
-      let newMessage = {
-        id: 7,
-        message: state.newMessage
-      }
-
-      state.messages.push(newMessage);
-      state.newMessage = '';
-      break;
-    case UPDATE_NEW_MESSAGE:
-      state.newMessage = action.newMessage;
-      break;
-
+    case UPDATE_NEW_MESSAGE_BODY:
+      state.newMessageBody = action.body;
+      return state;
+    case SEND_MESSAGE:
+      let body = state.newMessageBody;
+      state.newMessageBody = '';
+      state.messages.push({ id: 6, message: body });
+      return state;
     default:
-      break;
+      return state;
   }
-
-  return state;
 }
 
-export const addMessageActionCreator = () => {
-  return { type: ADD_MESSAGE }
-}
+export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
+export const updateNewMessageBodyCreator = (body) =>
+  ({ type: UPDATE_NEW_MESSAGE_BODY, body: body })
 
-export const updateNewMessageActionCreator = (text) => {
-  return { type: UPDATE_NEW_MESSAGE, newMessage: text }
-}
 export default dialogsReducer;
