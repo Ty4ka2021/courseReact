@@ -1,10 +1,8 @@
 import React from 'react';
 import s from './Navbar.module.css';
 import { NavLink } from "react-router-dom";
-// import Sidebar from './Sidebar/Sidebar';
 
-const Navbar = (props) => {
-  // let sidebarElement = props.state.user.map(us => <Sidebar url={us.url} id={us.id} name={us.name} />);
+const Navbar = () => {
   return (
     <div>
 
@@ -25,9 +23,6 @@ const Navbar = (props) => {
           <div>Settings</div>
         </div>
       </nav>
-      {/* <ul className={s.listUsers}>
-        {sidebarElement}
-      </ul> */}
     </div>
   )
 }
