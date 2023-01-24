@@ -6,19 +6,10 @@ import App from './App';
 import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-let rerenderEntireTree = () => {
-  root.render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <App />
-      </Provider>
-     
-    </React.StrictMode>);
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
 
-};
-
-rerenderEntireTree();
-
-store.subscribe(() => {
-  rerenderEntireTree()
-});
+  </React.StrictMode>);
