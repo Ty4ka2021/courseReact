@@ -23,3 +23,9 @@
   border: none;
   border-radius: 6px;
 }
+
+.selectedPage {
+  font-weight: 700;
+  color: #fff;
+}
+
