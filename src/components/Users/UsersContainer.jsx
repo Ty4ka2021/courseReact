@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { follow, setCurrentPage, unfollow, toggleFollowingProgress, getUsers } from '../../redux/usersReducer';
 import Preloader from '../common/Preloader/Preloader';
 import Users from './Users';
@@ -56,7 +57,8 @@ let mapStateToProps = (state) => {
 //   toggleIsFetching: toggleIsFetchingAC,
 // })(UsersContainer);
 
-export default connect(mapStateToProps, {
+
+export default withAuthRedirect(connect(mapStateToProps, {
   follow,
   unfollow,
   
@@ -64,4 +66,4 @@ export default connect(mapStateToProps, {
   
   toggleFollowingProgress,
   getUsers
-})(UsersContainer);
+})(UsersContainer));
