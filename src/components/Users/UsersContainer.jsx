@@ -62,7 +62,7 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-  withAuthRedirect,
+  // withAuthRedirect, /*(запретить просматривать пользователей анонимно )*/
   connect(mapStateToProps, {
     follow,
     unfollow,
